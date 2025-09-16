@@ -1,0 +1,21 @@
+---
+alwaysApply: false
+description: Conventional Commits 規範與範例
+---
+
+# Commit 規範（Conventional Commits）
+
+## 格式
+`<type>(scope): <subject>`
+
+- type：`feat` | `fix` | `docs` | `style` | `refactor` | `perf` | `test` | `build` | `ci` | `chore` | `revert`
+- scope：選填，建議使用功能域名（如 `auth`、`user`）
+- subject：簡述變更（祈使句，中文可）
+
+## 範例
+- `feat(auth): 新增 OAuth 登入流程`
+- `fix(button): 修正 disabled 樣式不一致`
+- `chore: 調整 ESLint 與 Prettier 設定`
+
+## 腳本建議
+- `commit-msg` hook 使用 `commitlint` 驗證訊息格式。

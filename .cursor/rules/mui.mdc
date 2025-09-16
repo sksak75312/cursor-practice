@@ -1,0 +1,20 @@
+---
+globs: *.ts,*.tsx
+description: MUI 設計原則、主題、樣式與元件使用規範
+---
+
+# MUI 使用規範
+
+## 主題與樣式
+- 全域主題集中 `src/theme/`，由 `ThemeProvider` 於 `src/App.tsx` 包覆。
+- 優先 `sx` 與 `styled`；避免複雜行內 style。色票/間距/排版常數放主題。
+
+## 元件原則
+- 優先使用 MUI 元件；圖示使用 `@mui/icons-material`。
+- 表單與 `react-hook-form` 整合時，建立封裝元件於 `features/<domain>/components/`。
+
+## a11y 與語意
+- 互動元件補齊 `aria-*`；使用 `Typography` 與語意標籤，避免 div soup。
+
+## 效能
+- 使用 `memo`、`useMemo`、`useCallback`；大型列表採虛擬化（如 `@tanstack/react-virtual`）。
