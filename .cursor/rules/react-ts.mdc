@@ -1,0 +1,41 @@
+---
+globs: *.ts,*.tsx
+description: React 19 + TypeScript 程式碼風格、Hooks 與型別最佳實務
+---
+
+# React 19 + TypeScript 寫作規則
+
+## 元件與檔案
+- 檔名使用 `PascalCase`，副檔名為 `*.tsx`。每檔單一預設輸出。
+- 僅用函式元件；避免類別元件。
+- 跨域共用元件置於 `src/components/`；功能域專屬元件置於 `src/features/<domain>/components/`。
+
+## Hooks 與狀態
+- 善用 `useState`/`useReducer` 管理本地狀態，重邏輯抽為自訂 hooks（`src/hooks/`）。
+- 以 `useMemo`、`useCallback` 降低重繪；事件處理以 `handleXxx` 命名。
+- 非 UI 邏輯優先下沉為 hooks，維持元件純淨。
+
+## 型別策略
+- 公用型別於 `src/types/`；各功能域 API 型別於 `src/features/<domain>/api/`。
+- 優先使用 `type`；需擴充時使用 `interface`。
+- 禁用 `any`；必要時以 `unknown` 並在邊界收斂。
+
+## 匯入與路徑
+- 外部套件 → 別名（`@/`）→ 相對路徑；群組間空行。
+- 跨域匯入使用 Vite/TS 別名；相對路徑僅限同域。
+
+## MUI 配合
+- 以 `ThemeProvider` 提供主題；複雜樣式以 `sx`/`styled` 實作，常數集中 `src/theme/`。
+- 圖示使用 `@mui/icons-material`；表單建議與 `react-hook-form` 封裝對接。
+
+## ESLint / Prettier
+- 所有 TS/TSX 必須通過 ESLint 與 Prettier。
+- 僅在必要最小範圍使用 `eslint-disable-next-line` 並說明原因。
+
+## React 19 提示
+- 採用新 API 前評估型別完備性與資料抓取策略的一致性（如 `use`/資源型元件）。
+
+## 狀態管理
+- 若需要全域或跨頁狀態管理，請優先使用 `zustand`；將 store 放在 `src/stores/`，並以功能域分檔。
+- store 命名以動名詞結尾，如 `useAuthStore`、`useCartStore`；以 `create` 建立並匯出 hook。
+- 僅存放序列化狀態與同步邏輯；副作用與資料擷取封裝於自訂 hooks，再由 store 觸發。

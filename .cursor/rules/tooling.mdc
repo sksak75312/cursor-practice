@@ -1,0 +1,60 @@
+---
+alwaysApply: true
+description: ESLint / Prettier / lint-staged / Husky / Commitlint 規範與指令
+---
+
+# 工具鏈規範
+
+## 設定檔位置
+- ESLint：[.eslintrc.cjs](mdc:.eslintrc.cjs)
+- Prettier：[.prettierrc.json](mdc:.prettierrc.json)
+- TypeScript：[tsconfig.json](mdc:tsconfig.json)
+- Vite：[vite.config.ts](mdc:vite.config.ts)
+
+## `package.json` 指令建議
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --cache --ext .ts,.tsx src",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
+  }
+}
+```
+
+## lint-staged 建議
+```json
+{
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "src/**/*.{css,md,json}": ["prettier --write"]
+  }
+}
+```
+
+## Husky 建議 hooks
+```
+.husky/
+  pre-commit: pnpm lint-staged
+  commit-msg: pnpm commitlint --edit $1
+```
+
+## ESLint 推薦套件
+- `eslint`、`@typescript-eslint/parser`、`@typescript-eslint/eslint-plugin`
+- `eslint-plugin-react-hooks`、`eslint-plugin-import`、`eslint-config-prettier`
+- React 19 開發建議加入 `eslint-plugin-react-refresh`（開發環境）
+
+## Commit 驗證
+- 使用 `@commitlint/cli` 與 `@commitlint/config-conventional` 檢查訊息，規則見 [commit-rules.mdc](mdc:.cursor/rules/commit-rules.mdc)。
+
+## 開發環境規則
+- Node 版本使用 LTS；套件管理使用 `pnpm`（保持 `pnpm-lock.yaml` 一致）。
+- 安裝並啟用 ESLint、Prettier 外掛，儲存時自動格式化。
+- 啟動與建置請使用 `package.json` 既有腳本（`pnpm dev`/`build`/`preview`）。
+- `.env`、`.env.local` 管理環境變數；不得提交密鑰到版本控管。
+- 透過 `import.meta.env` 讀取環境變數，並在 `src/env.d.ts` 補齊型別。
+- React 開發啟用快速刷新（React Refresh）。

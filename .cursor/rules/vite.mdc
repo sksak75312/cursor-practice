@@ -1,0 +1,18 @@
+---
+alwaysApply: false
+description: Vite 建置、別名、效能與開發體驗規範
+---
+
+# Vite 規範
+
+## 基礎
+- 啟動/建置：`pnpm dev`、`pnpm build`、`pnpm preview`。
+- 別名：在 [vite.config.ts](mdc:vite.config.ts) 與 [tsconfig.json](mdc:tsconfig.json) 同步維護，如 `@/` → `src/`。
+
+## 開發體驗
+- 啟用 React 快速刷新（`@vitejs/plugin-react-swc` 或官方 React plugin）。
+- 使用環境變數時，以 `import.meta.env` 並在 `env.d.ts` 陳述型別。
+
+## 效能建議
+- 大型相依改用分包與 `manualChunks`；影像與字型使用資產內聯/外部化界線。
+- 以 `build.target` 對齊瀏覽器支援矩陣，並啟用 `sourcemap` 於 CI 供錯誤追蹤。

@@ -1,0 +1,47 @@
+---
+alwaysApply: true
+description: 全域專案結構與導覽規則，協助在 Cursor 中理解檔案與責任
+---
+
+# 專案結構與導覽規則（React 19 + TypeScript + MUI + Vite）
+
+本專案採用 React 19、TypeScript、MUI 作為 UI 套件，並以 Vite 建置。程式碼風格由 ESLint + Prettier 管控，搭配 Husky 與 lint-staged 於提交時檢查。
+
+## 主要檔案與目錄
+- `src/`：應用程式原始碼
+  - `src/main.tsx`：應用程式入口，掛載 React Root
+  - `src/App.tsx`：應用程式根組件（佈局、路由、ThemeProvider）
+  - `src/pages/`：頁面層（路由對應）
+  - `src/components/`：可重用 UI 元件（僅 UI，無業務邏輯）
+  - `src/features/`：功能模組（含 hooks、api、UI）
+  - `src/hooks/`：跨功能自訂 hooks
+  - `src/utils/`：純函式工具
+  - `src/types/`：共用型別宣告
+  - `src/theme/`：MUI 主題、樣式設定
+  - `src/assets/`：靜態資源（圖片、icons、字型）
+  - `src/styles/`：全域樣式（如 CSS reset、字體載入）
+  - `src/env.d.ts`：環境變數型別
+  - `src/stores/`：全域或跨頁狀態（如 Zustand stores），依功能域分檔
+
+## 組件與檔名慣例
+- React 組件檔名使用 `PascalCase`，副檔名一律 `*.tsx`。
+- 跨頁重用的組件放在 `src/components/`，功能域組件放在 `src/features/<domain>/components/`。
+
+## 路由與頁面
+- 路由集中於 `src/App.tsx` 或 `src/routes/`，頁面放 `src/pages/`。
+- 頁面避免耦合過多業務邏輯，將可重用邏輯下沉到 `features/` 或 `hooks/`。
+
+## API 存取
+- API 呼叫集中於 `src/features/<domain>/api/` 或 `src/api/`，統一錯誤處理與攔截器。
+
+## 建置與設定
+- Vite 設定位於 [vite.config.ts](mdc:vite.config.ts)。
+- TypeScript 設定位於 [tsconfig.json](mdc:tsconfig.json)。
+- ESLint/Prettier 設定位於 [.eslintrc.cjs](mdc:.eslintrc.cjs) 與 [.prettierrc.json](mdc:.prettierrc.json)。
+
+## Git Hooks 與提交流程
+- Husky hooks 於 `.husky/` 內定義，例如 `pre-commit` 與 `commit-msg`。
+- 提交前自動執行 `lint-staged`，僅針對已暫存檔案做 Lint/Format。
+- Commit 訊息遵循 Conventional Commits，規則見 [commit-rules.mdc](mdc:.cursor/rules/commit-rules.mdc)。
+
+ 
