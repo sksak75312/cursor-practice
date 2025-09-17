@@ -16,7 +16,6 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 interface EquipmentItem {
@@ -45,7 +44,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 96,
     imageUrl:
       'https://images.unsplash.com/photo-1508766206392-8bd5cf550d1d?auto=format&fit=crop&w=1200&q=80',
-    description: '雙門雙窗設計，搭配全景天窗與抗風支架，新手也能快速搭設。',
+    description: '雙門雙窗搭配穩固帳桿，新手也能快速完成搭建，視野與舒適度兼備。',
     tags: ['3人同行', '快速搭建', '抗風雪'],
   },
   {
@@ -59,7 +58,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 88,
     imageUrl:
       'https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=1200&q=80',
-    description: '背負系統加強通風與支撐，長天數縱走也能保持舒適。',
+    description: '背負系統提升通風與支撐，長天數縱走也能保持舒適與穩定。',
     tags: ['55L 容量', '水袋相容', '人體工學'],
   },
   {
@@ -73,7 +72,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 91,
     imageUrl:
       'https://images.unsplash.com/photo-1533228100845-08145b01de14?auto=format&fit=crop&w=1200&q=80',
-    description: '中空纖維與防濕表布結合，寒流夜晚也能保暖到位。',
+    description: '中空纖維與防濕表布結合，即使寒流夜晚也能穩定保暖且易於清潔。',
     tags: ['舒適 15°C', '防潮內裡', '雙向拉鍊'],
   },
   {
@@ -87,7 +86,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 82,
     imageUrl:
       'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=1200&q=80',
-    description: '堆疊式鍋具、酒精爐座與防風板一次備齊，煮食效率高。',
+    description: '堆疊式鍋具、酒精爐座與防風板一次備齊，煮食效率高且易收納。',
     tags: ['兩人份', '易清洗', '收納緊湊'],
   },
   {
@@ -101,7 +100,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 85,
     imageUrl:
       'https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1200&q=80',
-    description: 'USB-C 充電，擁有 360 度暖白光與急難閃爍模式。',
+    description: 'USB-C 充電設計，擁有 360 度暖白光與急難閃爍模式，營地照明更安心。',
     tags: ['800 流明', 'USB-C 充電', '調光'],
   },
   {
@@ -115,7 +114,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 79,
     imageUrl:
       'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80',
-    description: '超輕碳纖維桿身搭配快扣調節，長途健行穩定省力。',
+    description: '超輕碳纖維桿身搭配快扣調節，長程健行輕鬆省力且支撐穩固。',
     tags: ['碳纖維', '快扣鎖', '軟木握把'],
   },
   {
@@ -129,7 +128,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 77,
     imageUrl:
       'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80',
-    description: '高 R 值結構隔絕地面濕冷，附著力處理不易滑動。',
+    description: '高 R 值結構隔絕地面濕冷，自動充氣搭配防滑表面，睡眠品質更穩定。',
     tags: ['R 值 4.5', '自動充氣', '靜音'],
   },
   {
@@ -143,7 +142,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 84,
     imageUrl:
       'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80',
-    description: '鈦合金導熱快速又耐用，適合想減重又講究料理的你。',
+    description: '鈦合金導熱快速且耐用，適合想減重又講究料理質感的露營玩家。',
     tags: ['鈦合金', '快速煮沸', '超輕量'],
   },
   {
@@ -157,7 +156,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 93,
     imageUrl:
       'https://images.unsplash.com/photo-1455763916899-e8b50eca9967?auto=format&fit=crop&w=1200&q=80',
-    description: '雙層防風布與雪裙設計，面對嚴峻山岳依舊穩如磐石。',
+    description: '雙層防風布與雪裙設計，即使面對嚴峻山岳氣候依舊穩若磐石。',
     tags: ['四季適用', '雙層布料', '雪裙'],
   },
   {
@@ -171,7 +170,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 87,
     imageUrl:
       'https://images.unsplash.com/photo-1531870979163-2c1dfd4ba810?auto=format&fit=crop&w=1200&q=80',
-    description: '850FP 防潑水羽絨，附睡墊固定帶，翻身也不漏風。',
+    description: '850FP 防潑水羽絨與睡墊固定帶設計，翻身也不漏風，保暖更安心。',
     tags: ['850FP', '防潑水', '可開闔'],
   },
   {
@@ -185,7 +184,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 90,
     imageUrl:
       'https://images.unsplash.com/photo-1516571979642-611b54f68947?auto=format&fit=crop&w=1200&q=80',
-    description: '全球雙向訊息與 SOS 緊急鍵，支援行程軌跡分享。',
+    description: '支援全球訊息與 SOS 緊急聯繫，提供即時氣象與行程共享功能。',
     tags: ['衛星通訊', 'SOS', '氣象提醒'],
   },
   {
@@ -199,7 +198,7 @@ const EQUIPMENT_DATA: EquipmentItem[] = [
     popularity: 83,
     imageUrl:
       'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80',
-    description: '透氣背板與快速取物側袋，輕裝郊山或都會通勤皆適用。',
+    description: '透氣背板與快取側袋設計，輕裝郊山或都市通勤都能自在使用。',
     tags: ['28L', '含雨罩', '快取口袋'],
   },
 ];
@@ -238,7 +237,7 @@ const sortLabelMap: Record<string, string> = {
 };
 
 const SPRING_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const baseTransition = { duration: 0.35, ease: SPRING_EASE };
+const baseTransition = { duration: 0.5, ease: SPRING_EASE };
 
 const priceFormatter = new Intl.NumberFormat('zh-TW', {
   style: 'currency',
@@ -304,13 +303,14 @@ export const EquipmentPage: React.FC = () => {
   }, [filteredItems, sortBy]);
 
   const pageInitial = React.useMemo(
-    () => (shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }),
+    () => (shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }),
     [shouldReduceMotion],
   );
   const filterInitial = React.useMemo(
-    () => (shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }),
+    () => (shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }),
     [shouldReduceMotion],
   );
+
   const cardVariants = React.useMemo(
     () =>
       shouldReduceMotion
@@ -320,10 +320,18 @@ export const EquipmentPage: React.FC = () => {
             exit: { opacity: 1, y: 0 },
           }
         : {
-            initial: { opacity: 0, y: 16 },
+            initial: { opacity: 0, y: 24 },
             animate: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: -16 },
+            exit: { opacity: 0, y: -12 },
           },
+    [shouldReduceMotion],
+  );
+
+  const buildCardTransition = React.useCallback(
+    (index: number) =>
+      shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.6, ease: SPRING_EASE, delay: index * 0.05 },
     [shouldReduceMotion],
   );
 
@@ -331,7 +339,7 @@ export const EquipmentPage: React.FC = () => {
     <motion.div
       initial={pageInitial}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: SPRING_EASE }}
+      transition={{ duration: 0.65, ease: SPRING_EASE }}
     >
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <Stack spacing={{ xs: 4, md: 5 }}>
@@ -359,52 +367,56 @@ export const EquipmentPage: React.FC = () => {
           >
             <Card sx={{ p: { xs: 2.5, md: 3 } }}>
               <Stack spacing={{ xs: 2.5, md: 3.5 }}>
-                <Grid container spacing={2}>
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                    <TextField
-                      fullWidth
-                      label="搜尋裝備"
-                      placeholder="輸入裝備名稱"
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
-                    />
-                  </Grid>
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                    <FormControl fullWidth>
-                      <InputLabel id="equipment-category">裝備分類</InputLabel>
-                      <Select
-                        labelId="equipment-category"
-                        label="裝備分類"
-                        value={category}
-                        onChange={handleCategoryChange}
-                      >
-                        <MenuItem value="all">全部分類</MenuItem>
-                        {Object.entries(categoryLabels).map(([value, label]) => (
-                          <MenuItem key={value} value={value}>
-                            {label}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                    <FormControl fullWidth>
-                      <InputLabel id="sort-by">排序方式</InputLabel>
-                      <Select
-                        labelId="sort-by"
-                        label="排序方式"
-                        value={sortBy}
-                        onChange={handleSortChange}
-                      >
-                        {Object.entries(sortLabelMap).map(([value, label]) => (
-                          <MenuItem key={value} value={value}>
-                            {label}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                </Grid>
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gap: { xs: 2, md: 3 },
+                    gridTemplateColumns: {
+                      xs: '1fr',
+                      sm: 'repeat(2, minmax(0, 1fr))',
+                      md: 'repeat(3, minmax(0, 1fr))',
+                    },
+                  }}
+                >
+                  <TextField
+                    fullWidth
+                    label="搜尋裝備"
+                    placeholder="輸入裝備名稱"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                  <FormControl fullWidth>
+                    <InputLabel id="equipment-category">裝備分類</InputLabel>
+                    <Select
+                      labelId="equipment-category"
+                      label="裝備分類"
+                      value={category}
+                      onChange={handleCategoryChange}
+                    >
+                      <MenuItem value="all">全部分類</MenuItem>
+                      {Object.entries(categoryLabels).map(([value, label]) => (
+                        <MenuItem key={value} value={value}>
+                          {label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="sort-by">排序方式</InputLabel>
+                    <Select
+                      labelId="sort-by"
+                      label="排序方式"
+                      value={sortBy}
+                      onChange={handleSortChange}
+                    >
+                      {Object.entries(sortLabelMap).map(([value, label]) => (
+                        <MenuItem key={value} value={value}>
+                          {label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Box>
 
                 <Box>
                   <Typography variant="subtitle2" gutterBottom>
@@ -462,103 +474,109 @@ export const EquipmentPage: React.FC = () => {
               </motion.span>{' '}
               件裝備
             </Typography>
-            <Grid container spacing={{ xs: 2.5, md: 3 }} alignItems="stretch">
+            <Box
+              sx={{
+                display: 'grid',
+                gap: { xs: 2.5, md: 3 },
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  sm: 'repeat(2, minmax(0, 1fr))',
+                  md: 'repeat(3, minmax(0, 1fr))',
+                },
+                alignItems: 'stretch',
+              }}
+            >
               <AnimatePresence mode="popLayout">
-                {sortedItems.map((item) => (
-                  <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4 }}>
-                    <motion.div
-                      layout
-                      initial={cardVariants.initial}
-                      animate={cardVariants.animate}
-                      exit={cardVariants.exit}
-                      transition={baseTransition}
-                      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-                      whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
-                      style={{ height: '100%' }}
+                {sortedItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={cardVariants.initial}
+                    animate={cardVariants.animate}
+                    exit={cardVariants.exit}
+                    transition={buildCardTransition(index)}
+                    whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.005 }}
+                    whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
+                    style={{ height: '100%' }}
+                  >
+                    <Card
+                      sx={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        overflow: 'hidden',
+                      }}
                     >
-                      <Card
+                      <Box
+                        component="img"
+                        src={item.imageUrl}
+                        alt={item.name}
+                        loading="lazy"
+                        onError={handleImageError}
                         sx={{
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          overflow: 'hidden',
+                          width: '100%',
+                          aspectRatio: '4 / 3',
+                          objectFit: 'cover',
+                          flexShrink: 0,
                         }}
+                      />
+                      <CardContent
+                        sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5 }}
                       >
-                        <Box
-                          component="img"
-                          src={item.imageUrl}
-                          alt={item.name}
-                          loading="lazy"
-                          onError={handleImageError}
-                          sx={{
-                            width: '100%',
-                            aspectRatio: '4 / 3',
-                            objectFit: 'cover',
-                            flexShrink: 0,
-                          }}
-                        />
-                        <CardContent
-                          sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5 }}
+                        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
+                          <Chip
+                            size="small"
+                            label={categoryLabels[item.category]}
+                            color="primary"
+                          />
+                          <Chip
+                            size="small"
+                            label={difficultyLabels[item.difficulty]}
+                            variant="outlined"
+                          />
+                          <Chip size="small" label={`人氣 ${item.popularity}`} variant="outlined" />
+                        </Stack>
+                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                          {item.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.description}
+                        </Typography>
+                        <Stack
+                          direction="row"
+                          spacing={1}
+                          alignItems="center"
+                          flexWrap="wrap"
+                          sx={{ mt: 'auto' }}
                         >
-                          <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
-                            <Chip
-                              size="small"
-                              label={categoryLabels[item.category]}
-                              color="primary"
-                            />
-                            <Chip
-                              size="small"
-                              label={difficultyLabels[item.difficulty]}
-                              variant="outlined"
-                            />
-                            <Chip
-                              size="small"
-                              label={`人氣 ${item.popularity}`}
-                              variant="outlined"
-                            />
-                          </Stack>
-                          <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                            {item.name}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {item.description}
-                          </Typography>
-                          <Stack
-                            direction="row"
-                            spacing={1}
-                            alignItems="center"
-                            flexWrap="wrap"
-                            sx={{ mt: 'auto' }}
-                          >
-                            <Chip
-                              size="small"
-                              variant="outlined"
-                              label={priceFormatter.format(item.price)}
-                            />
-                            <Chip size="small" variant="outlined" label={`${item.weightKg} 公斤`} />
-                            <Stack direction="row" spacing={0.5} flexWrap="wrap">
-                              {item.seasons.map((season) => (
-                                <Chip
-                                  key={season}
-                                  size="small"
-                                  label={seasonLabels[season]}
-                                  variant="outlined"
-                                />
-                              ))}
-                            </Stack>
-                          </Stack>
+                          <Chip
+                            size="small"
+                            variant="outlined"
+                            label={priceFormatter.format(item.price)}
+                          />
+                          <Chip size="small" variant="outlined" label={`${item.weightKg} 公斤`} />
                           <Stack direction="row" spacing={0.5} flexWrap="wrap">
-                            {item.tags.map((tag) => (
-                              <Chip key={tag} size="small" label={tag} variant="outlined" />
+                            {item.seasons.map((season) => (
+                              <Chip
+                                key={season}
+                                size="small"
+                                label={seasonLabels[season]}
+                                variant="outlined"
+                              />
                             ))}
                           </Stack>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </Grid>
+                        </Stack>
+                        <Stack direction="row" spacing={0.5} flexWrap="wrap">
+                          {item.tags.map((tag) => (
+                            <Chip key={tag} size="small" label={tag} variant="outlined" />
+                          ))}
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 ))}
               </AnimatePresence>
-            </Grid>
+            </Box>
           </Box>
         </Stack>
       </Container>
