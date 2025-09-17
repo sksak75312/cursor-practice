@@ -15,6 +15,19 @@ import {
   Divider,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router';
+
+interface NavLinkItem {
+  label: string;
+  to?: string;
+  href?: string;
+}
+
+const navLinks: NavLinkItem[] = [
+  { label: '首頁', to: '/' },
+  { label: '裝備列表', to: '/equipment' },
+  { label: '行程規劃', href: '#' },
+];
 
 export const Navbar: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -29,20 +42,28 @@ export const Navbar: React.FC = () => {
           </Typography>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 3 }}>
-            <MuiLink href="#" underline="none" color="inherit">
-              裝備
-            </MuiLink>
-            <MuiLink href="#" underline="none" color="inherit">
-              關於我們
-            </MuiLink>
-            <MuiLink href="#" underline="none" color="inherit">
-              部落格
-            </MuiLink>
+            {navLinks.map((link) =>
+              link.to ? (
+                <MuiLink
+                  key={link.label}
+                  component={RouterLink}
+                  to={link.to}
+                  underline="none"
+                  color="inherit"
+                >
+                  {link.label}
+                </MuiLink>
+              ) : (
+                <MuiLink key={link.label} href={link.href ?? '#'} underline="none" color="inherit">
+                  {link.label}
+                </MuiLink>
+              ),
+            )}
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Button size="small" variant="text" color="inherit">
-              帳戶
+              登入
             </Button>
           </Box>
 
@@ -67,20 +88,22 @@ export const Navbar: React.FC = () => {
           </Box>
           <Divider />
           <List>
-            <ListItemButton component="a" href="#">
-              <ListItemText primary="裝備" />
-            </ListItemButton>
-            <ListItemButton component="a" href="#">
-              <ListItemText primary="關於我們" />
-            </ListItemButton>
-            <ListItemButton component="a" href="#">
-              <ListItemText primary="部落格" />
-            </ListItemButton>
+            {navLinks.map((link) =>
+              link.to ? (
+                <ListItemButton key={link.label} component={RouterLink} to={link.to}>
+                  <ListItemText primary={link.label} />
+                </ListItemButton>
+              ) : (
+                <ListItemButton key={link.label} component="a" href={link.href ?? '#'}>
+                  <ListItemText primary={link.label} />
+                </ListItemButton>
+              ),
+            )}
           </List>
           <Divider />
           <Box sx={{ p: 2 }}>
             <Button fullWidth size="small" variant="outlined" color="inherit">
-              登入 / 註冊
+              註冊 / 登入
             </Button>
           </Box>
         </Box>
